@@ -1,0 +1,38 @@
+models:
+  Store:
+    user_id: foreign
+    name: string
+    slug: string
+    description: text
+
+  Category:
+    name: string
+    slug: string
+    relationships:
+      hasMany: Product
+
+  Product:
+    store_id: foreign
+    category_id: foreign
+    name: string
+    slug: string
+
+controllers:
+  Store:
+    index:
+      query: all
+      render: stores.index with:stores
+    create:
+      render: stores.create
+    store:
+      validate: name, description
+      save: store
+      redirect: stores.index
+    show:
+      render: stores.show with:stores
+    edit:
+      render: stores.edit with:stores
+    update:
+      validate: name, description
+      update: store
+      redirect: stores.show

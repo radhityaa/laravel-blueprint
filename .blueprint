@@ -1,0 +1,25 @@
+created:
+    - app/Http/Controllers/StoreController.php
+    - database/factories/StoreFactory.php
+    - database/factories/CategoryFactory.php
+    - database/factories/ProductFactory.php
+    - database/migrations/2024_05_12_000645_create_stores_table.php
+    - database/migrations/2024_05_12_000646_create_categories_table.php
+    - database/migrations/2024_05_12_000647_create_products_table.php
+    - app/Models/Store.php
+    - app/Models/Category.php
+    - app/Models/Product.php
+    - tests/Feature/Http/Controllers/StoreControllerTest.php
+    - app/Http/Requests/StoreStoreRequest.php
+    - app/Http/Requests/StoreUpdateRequest.php
+    - resources/views/stores/index.blade.php
+    - resources/views/stores/create.blade.php
+    - resources/views/stores/show.blade.php
+    - resources/views/stores/edit.blade.php
+updated:
+    - routes/web.php
+models:
+    User: { name: string, email: string, email_verified_at: 'timestamp nullable', password: string, remember_token: 'string:100 nullable' }
+    Store: { user_id: foreign, name: string, slug: string, description: text }
+    Category: { name: string, slug: string, relationships: { hasMany: Product } }
+    Product: { store_id: foreign, category_id: foreign, name: string, slug: string }
